@@ -11,4 +11,4 @@ buildscript {
     }
 }
 bootstrapRefreshVersions(justAdditionalAliases)
-rootProject.name = "Template-for-Gradle-Plugins"
+rootProject.name = "Plugin-Test"
