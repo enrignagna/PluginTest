@@ -17,12 +17,12 @@ plugins {
 /*
  * Project information
  */
-group = "org.danilopianini"
+group = "io.github.enrignagna"
 description = "A template repository for kickstarting Gradle Plugins"
 inner class ProjectInfo {
     val longName = "Template for Gradle Plugins"
-    val website = "https://github.com/DanySK/Template-for-Gradle-Plugins"
-    val scm = "git@github.com:DanySK/Template-for-Gradle-Plugins.git"
+    val website = "https://github.com/enrignagna/PluginTest" //"https://github.com/DanySK/Template-for-Gradle-Plugins"
+    val scm = "git@github.com:enrignagna/PluginTest.git" //"git@github.com:DanySK/Template-for-Gradle-Plugins.git"
     val pluginImplementationClass = "$group.template.HelloGradle"
     val tags = listOf("template", "kickstart", "example")
 }
@@ -145,9 +145,9 @@ publishing {
             pom {
                 developers {
                     developer {
-                        name.set("Danilo Pianini")
-                        email.set("danilo.pianini@gmail.com")
-                        url.set("http://www.danilopianini.org/")
+                        name.set("Enrico Gnagnarella")
+                        email.set("enrico.gnagnarella@studio.unibo.it")
+                        url.set("https://enrignagna.github.io/")
                     }
                 }
             }
