@@ -23,7 +23,7 @@ inner class ProjectInfo {
     val longName = "Template for Gradle Plugins"
     val website = "https://github.com/enrignagna/PluginTest"
     val scm = "git@github.com:enrignagna/PluginTest.git"
-    val pluginImplementationClass = "$group.template.HelloGradle"
+    val pluginImplementationClass = "org.enrignagna.template.HelloGradle"
     val tags = listOf("template", "kickstart", "example")
 }
 val info = ProjectInfo()

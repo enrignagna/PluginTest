@@ -11,4 +11,4 @@ buildscript {
     }
 }
 bootstrapRefreshVersions(justAdditionalAliases)
-rootProject.name = "PluginTest"
+rootProject.name = "Plugin-Test"
