@@ -21,8 +21,8 @@ group = "io.github.enrignagna"
 description = "A template repository for kickstarting Gradle Plugins"
 inner class ProjectInfo {
     val longName = "Template for Gradle Plugins"
-    val website = "https://github.com/enrignagna/PluginTest" //"https://github.com/DanySK/Template-for-Gradle-Plugins"
-    val scm = "git@github.com:enrignagna/PluginTest.git" //"git@github.com:DanySK/Template-for-Gradle-Plugins.git"
+    val website = "https://github.com/enrignagna/PluginTest"
+    val scm = "git@github.com:enrignagna/PluginTest.git"
     val pluginImplementationClass = "$group.template.HelloGradle"
     val tags = listOf("template", "kickstart", "example")
 }
