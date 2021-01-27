@@ -1,4 +1,4 @@
-package org.danilopianini.template
+package org.enrignagna.template
 
 import java.io.Serializable
 import org.gradle.api.DefaultTask

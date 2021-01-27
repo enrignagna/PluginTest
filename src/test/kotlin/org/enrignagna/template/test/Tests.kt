@@ -1,4 +1,4 @@
-package org.danilopianini.template.test
+package org.enrignagna.template.test
 
 import com.uchuhimo.konf.Config
 import com.uchuhimo.konf.source.yaml
