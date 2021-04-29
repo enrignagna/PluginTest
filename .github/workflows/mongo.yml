@@ -12,8 +12,8 @@ jobs:
           image-version: latest
           port: 27017
       - name: Test mongo connection
-        run: "|
+        run: |
         sudo mongo localhost:27017
         use WriteModel
-        use ReadModel"
+        use ReadModel
 
