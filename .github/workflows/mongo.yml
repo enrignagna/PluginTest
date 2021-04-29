@@ -12,7 +12,5 @@ jobs:
           image-version: latest
           port: 27017
       - name: Test mongo connection
-        run: "
-        mongo
-        db"
+        run: "mongo; db"
 
