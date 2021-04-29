@@ -13,7 +13,6 @@ jobs:
           port: 27017
       - name: Test mongo connection
         run: "
-        sudo mongo localhost:27017 &&
-        use WriteModel &&
-        use ReadModel "
+        sudo mongo localhost:27017
+        db"
 
