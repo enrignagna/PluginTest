@@ -13,6 +13,6 @@ jobs:
           port: 27017
       - name: Test mongo connection
         run: "
-        sudo mongo localhost:27017
+        mongo
         db"
 
