@@ -1,4 +1,4 @@
-on: [push]
+on: [ push ]
 
 jobs:
   test_mongo_action:
@@ -13,7 +13,8 @@ jobs:
           port: 27017
       - name: Test mongo connection
         id: test_mongo_connection
-        run: "sudo mongo localhost:27017;
-              use WriteModel;
-              use ReadModel;
-              "
+        run: "sudo mongo localhost:27017"
+      - name: Create write model
+        run: "use WriteModel"
+      - name: Create write model
+        run: "use ReadModel"
