@@ -35,23 +35,13 @@ jobs:
     #    echo "::set-output name=commit::$(git rev-parse HEAD)"
     - name: Push new branch
       run: git push origin release/v${{ github.event.inputs.versionName }}
-    - name: Create "merge into dev" pull request
-      uses: thomaseizinger/create-pull-request@1.0.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      with:
-        head: main
-        base: develop
-        title: Merge main into dev branch
-        body: |
-          This PR merges the main branch back into dev. This happens to ensure that the updates that happened on the release branch, i.e. CHANGELOG and manifest updates, are also present on the dev branch.
     - name: Create pull request into main
       uses: thomaseizinger/create-pull-request@1.0.0
       env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       with:
           head: release/v${{ github.event.inputs.versionName }}
-          base: main
+          base: master
           title: "v${{ github.event.inputs.versionName }} into main"
     - name: Create pull request to develop
       uses: thomaseizinger/create-pull-request@1.0.0
