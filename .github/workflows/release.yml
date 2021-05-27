@@ -1,0 +1,65 @@
+name: Release
+
+# Generates a new release, after a release/* branch is successfully
+# merged into main. The tag name is inferred from the branch name.
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  Tag:
+    # only merged pull requests must trigger this job
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      release_upload_url: ${{ steps.create-release.outputs.upload_url }}
+      release_id: ${{ steps.create-release.outputs.id }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: recursive
+      # Install the JDK
+      - uses: joschi/setup-jdk@v2.3.0
+        with:
+          java-version: 8
+      - name: Extract version from branch name (for release branches)
+        if: startsWith(github.event.pull_request.head.ref, 'release/')
+        run: |
+          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          VERSION=${BRANCH_NAME#release/}
+          echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
+
+
+
+        # It is necessary to manually setting the tag, as simply creating a release generates a
+        # lightweight tag, making the gitSemVer plugin not working properly.
+      - name: Add tag
+        run: |
+          git config user.name releaserbot
+          git config user.email github-actions@github.com
+          git tag ${{ env.RELEASE_VERSION }} -a -m "Release ${{ env.RELEASE_VERSION }}"
+          git push --follow-tags
+
+      - name: Create release
+        id: create-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          tag_name: ${{ env.RELEASE_VERSION }}
+          release_name: ${{ env.RELEASE_VERSION }}
+          prerelease: false
+
+      - name: Set version as a job output
+        id: version
+        run: |
+          echo "::set-output name=version::${{ env.RELEASE_VERSION }}"
+
+
