@@ -43,9 +43,6 @@ jobs:
           base: main
           title: v${{ github.event.inputs.versionName }} into main
           reviewers: ${{ github.event.issue.user.login }}
-          body: |
-              This PR was created in response workflow running.
-              I've updated the version name and code commit: ${{ steps.make-commit.outputs.commit }}.
     - name: Create pull request to develop
       uses: thomaseizinger/create-pull-request@master
       with:
@@ -54,6 +51,3 @@ jobs:
           base: develop
           title: v${{ github.event.inputs.versionName }} into develop
           reviewers: ${{ github.event.issue.user.login }}
-          body: |
-              This PR was created in response workflow running.
-              I've updated the version name and code commit: ${{ steps.make-commit.outputs.commit }}.
