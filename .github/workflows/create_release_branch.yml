@@ -46,4 +46,4 @@ jobs:
       with:
           head: release/v${{ github.event.inputs.versionName }}
           base: develop
-          title:  "v${{ github.event.inputs.versionName }} into main"
+          title:  "v${{ github.event.inputs.versionName }} into develop"
