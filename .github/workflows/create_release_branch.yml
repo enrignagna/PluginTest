@@ -41,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           head: release/v${{ github.event.inputs.versionName }}
           base: main
-          title: v${{ github.event.inputs.versionName }} into main
+          title: "v${{ github.event.inputs.versionName }} into main"
           reviewers: ${{ github.event.issue.user.login }}
     - name: Create pull request to develop
       uses: thomaseizinger/create-pull-request@master
@@ -49,5 +49,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           head: release/v${{ github.event.inputs.versionName }}
           base: develop
-          title: v${{ github.event.inputs.versionName }} into develop
+          title:  echo ${{ github.event.inputs.versionName }} into develop"
           reviewers: ${{ github.event.issue.user.login }}
