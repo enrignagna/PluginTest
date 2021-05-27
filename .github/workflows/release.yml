@@ -1,6 +1,5 @@
 name: Release
 
-# Generates a new release, after a release/* branch is successfully
 # merged into main. The tag name is inferred from the branch name.
 on:
   pull_request:
