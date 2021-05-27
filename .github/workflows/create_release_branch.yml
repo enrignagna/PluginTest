@@ -36,22 +36,20 @@ jobs:
     - name: Push new branch
       run: git push origin release/v${{ github.event.inputs.versionName }}
     - name: Create pull request into main
-      uses: thomaseizinger/create-pull-request@1.0.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      uses: thomaseizinger/create-pull-request@main
       with:
-       head: release/v${{ github.event.inputs.versionName }}
-       base: main
-       title: v${{ github.event.inputs.versionName }} into main
-       reviewers: ${{ github.event.issue.user.login }}
-       body: |
-           This PR was created in response workflow running.
-           I've updated the version name and code commit: ${{ steps.make-commit.outputs.commit }}.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          head: release/v${{ github.event.inputs.versionName }}
+          base: main
+          title: v${{ github.event.inputs.versionName }} into main
+          reviewers: ${{ github.event.issue.user.login }}
+          body: |
+               This PR was created in response workflow running.
+               I've updated the version name and code commit: ${{ steps.make-commit.outputs.commit }}.
     - name: Create pull request to develop
-      uses: thomaseizinger/create-pull-request@1.0.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      uses: thomaseizinger/create-pull-request@develop
       with:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }
           head: release/v${{ github.event.inputs.versionName }}
           base: develop
           title: v${{ github.event.inputs.versionName }} into develop
